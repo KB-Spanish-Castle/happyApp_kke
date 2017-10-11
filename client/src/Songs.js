@@ -9,7 +9,7 @@ class Songs extends Component {
     let songList = [];
     this.props.songs.forEach((song) => {
       songList.push(
-        <Song song={song}/>
+        <Song song={song} refreshSongs={this.props.refreshSongs} />
       );
     });
     return (
