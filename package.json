@@ -20,10 +20,10 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "node-fetch": "^1.7.3",
     "spotify-web-api-node": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^4.8.0"
   }
- 
 }
