@@ -28,13 +28,13 @@ export default class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
               <NavItem>
-                {/*<Link className='nav-link' to='/'>Home</Link>*/}Home
+                <Link className='nav-link' to='/'>Home</Link>
               </NavItem>
               <NavItem>
-                {/* <Link className='nav-link' to='/signup'>Sign Up</Link> */}Sign Up
+                <Link className='nav-link' to='/signup'>Sign Up</Link>
               </NavItem>
               <NavItem>
-                {/* <Link className='nav-link' to='/login'>Login</Link> */} Login
+                <Link className='nav-link' to='/login'>Login</Link>
               </NavItem>
             </Nav>
           </Collapse>
