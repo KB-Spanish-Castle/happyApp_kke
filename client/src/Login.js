@@ -9,7 +9,8 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      message: ""
+      message: "",
+      name: ""
     };
     this.loginUser = this.loginUser.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -42,9 +43,13 @@ class Login extends Component {
     }).then((answer) => {
       console.log(answer);
       if (answer.success) {
+        this.props.setUser({name: answer.name, email: this.state.email});
         this.props.history.push("/");
       } else {
         console.log(answer.message);
+        this.setState({
+          message: answer.message
+        });
       }
     });
   }
@@ -68,6 +73,9 @@ class Login extends Component {
           </FormGroup>
           <Button onClick={this.loginUser}>Log in</Button>
         </Form>
+        {
+          userMessage
+        }
       </Container>
     );
   }

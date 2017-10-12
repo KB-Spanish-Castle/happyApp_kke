@@ -6,6 +6,7 @@ class Song extends Component {
     super(props);
     this.playSong = this.playSong.bind(this);
   }
+  
   playSong() {
     console.log("You clicked the button for: " + this.props.song.name + ":" + this.props.song.spotifyId);
     var that=this;
