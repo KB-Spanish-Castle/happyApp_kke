@@ -2,7 +2,8 @@
 var express = require("express");
 var app = express();
 var mongoose = require('mongoose');
-var Song = require('./models/song.js');
+var Song = require('./models/song');
+var User = require('./models/user');
 var bodyParser = require('body-parser');
 var SpotifyWebApi = require('spotify-web-api-node');
 var fetch = require('node-fetch');
@@ -117,6 +118,60 @@ app.put('/songs/:spotifyId', function (req, res, next) {
         }
       });
 
+    }
+  });
+});
+
+app.post('/user', function (req, res, next) {
+  var user = new User();
+  user.name = req.body.name;
+  user.email = req.body.email;
+  user.password = req.body.password;
+  console.log("new user", user.name);
+  user.save(function (err, savedUser) {
+    if (err) {
+      next(err);
+    } else {
+      res.json(savedUser);
+    }
+  });
+});
+
+app.post('/login', function (req, res, next) {
+  var email = req.body.email;
+  var password = req.body.password;
+  User.findOne({
+    email: email
+  }, function (err, user) {
+    if (err) {
+      res.json({
+        found: false,
+        message: err,
+        success: false
+      });
+    } else {
+      if (user) {
+        if (password === user.password) {
+          res.json({
+            found: true,
+            message: "Successful Login, Welcome " + user.name,
+            success: true,
+            name: user.name
+          });
+        } else {
+          res.json({
+            found: true,
+            message: "Bad password",
+            success: false
+          });
+        }
+      } else {
+        res.json({
+          found: false,
+          message: "No such user",
+          success: false
+        });
+      }
     }
   });
 });

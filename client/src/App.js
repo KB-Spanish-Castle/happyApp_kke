@@ -1,21 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Songs from './Songs';
 import NavBar from './NavBar';
+import Homepage from './Homepage';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+import Signup from './Signup';
+import Login from './Login';
+import Favorites from './Favorites';
 
-class App extends Component {
-
-  constructor(props) {
-    super(props);
+export default class App extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      songs: []
+      initialized: false,
+      songs: [],
+      user: { name: "", email: "" }
     };
     this.refreshSongs = this.refreshSongs.bind(this);
+    this.setUser = this.setUser.bind(this);
+    this.getUser = this.getUser.bind(this);
   }
 
   componentDidMount() {
     this.refreshSongs();
+    this.setState({
+      initialized: true
+    });
+  }
+
+  setUser(user) {
+    this.setState({
+      user: user
+    });
+  }
+
+  getUser() {
+    return this.state.user;
   }
 
   refreshSongs() {
@@ -30,28 +51,36 @@ class App extends Component {
   }
 
   render() {
-    return (
-
-      <div>
-        <NavBar/>
-
-        <header className="App-header App">
-          {/* <img src="https://images.unsplash.com/photo-1471275287446-f463543ee84f?dpr=1&auto=compress,format&fit=crop&w=1050&h=&q=80&cs=tinysrgb&crop=" /> */}
-          <img src="https://images.unsplash.com/photo-1499676763409-c0211693a66b?dpr=1&auto=compress,format&fit=crop&w=1300&h=&q=80&cs=tinysrgb&crop=" className="App-picture" alt="photo of phone music player" />
-          <h1 className="App-title">MUSIC APP</h1>
-        </header>
-
+    if (this.state.initialized) {
+      return (
         <div>
-          <div className="jumbotron App">
-            <h1>Hello, world!</h1>
-            <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-          </div>
-
+          <Router>
+            <div>
+              <NavBar user={this.state.user} />
+              <Route exact path='/' render={() => <Home songs={this.state.songs} refreshSongs={this.refreshSongs} />} />
+              <Route path='/signup' component={Signup} />
+              <Route path='/login' render={() => <Login setUser={this.setUser} />} />
+              <Route path='/favorites' component={Favorites} />
+            </div>
+          </Router>
         </div>
-        <Songs songs={this.state.songs} refreshSongs={this.refreshSongs} />
+      );
+    } else {
+      return (
+        <h2>
+          Loading...
+        </h2>
+      );
+    }
+  }
+}
+
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <Homepage songs={this.props.songs} refreshSongs={this.props.refreshSongs} />
       </div>
     );
   }
 }
-
-export default App;
