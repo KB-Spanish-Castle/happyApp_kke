@@ -1,15 +1,36 @@
 .App {
   text-align: center;
-  background-color: orange;
 }
 .SongList{
-  background-color: yellow;
+  background-color: rgb(247, 247, 197);
   
+}
+
+body {
+  /* background-image: url('https://images.unsplash.com/photo-1503173178995-e830507546b9?dpr=1&auto=compress,format&fit=crop&w=750&h=&q=80&cs=tinysrgb&crop=');
+  background-repeat: no-repeat; */
+  background: #ffd89b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #19547b, #ffd89b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #19547b, #ffd89b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.listStyle {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  text-align: auto;
 }
 
 .Song{
   text-align: left;
   color: rgb(26, 26, 175);
+}
+
+.skinnyPhoto {
+  height: 100px;
+  max-width: 100%;
 }
 
 .App-picture{
@@ -21,7 +42,7 @@
   height: 80px;
 }
 .App-header {
-  background-color: rgb(8, 8, 9);
+  background-color: rgb(8, 8, 9, 0.6);
   height: 150px;
   padding: 20px;
   color: rgb(2, 16, 28);

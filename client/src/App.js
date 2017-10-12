@@ -33,22 +33,20 @@ class App extends Component {
     return (
 
       <div>
-        <NavBar/>
-
-        <header className="App-header App">
-          {/* <img src="https://images.unsplash.com/photo-1471275287446-f463543ee84f?dpr=1&auto=compress,format&fit=crop&w=1050&h=&q=80&cs=tinysrgb&crop=" /> */}
-          <img src="https://images.unsplash.com/photo-1499676763409-c0211693a66b?dpr=1&auto=compress,format&fit=crop&w=1300&h=&q=80&cs=tinysrgb&crop=" className="App-picture" alt="photo of phone music player" />
-          <h1 className="App-title">MUSIC APP</h1>
+        <NavBar />
+        <header className="App-header">
+          <h1>MUSIC APP</h1>
         </header>
 
-        <div>
-          <div className="jumbotron App">
-            <h1>Hello, world!</h1>
-            <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-          </div>
-
+        <div >
+          <img style={{height: 250, width: 900}}  src="https://images.unsplash.com/photo-1420161900862-9a86fa1f5c79?dpr=1&auto=compress,format&fit=crop&w=750&h=&q=80&cs=tinysrgb&crop=" />
         </div>
-        <Songs songs={this.state.songs} refreshSongs={this.refreshSongs} />
+
+        <div className="listStyle">
+          {/* <img src="https://images.unsplash.com/photo-1471275287446-f463543ee84f?dpr=1&auto=compress,format&fit=crop&w=1050&h=&q=80&cs=tinysrgb&crop=" /> */}
+          <Songs songs={this.state.songs} refreshSongs={this.refreshSongs} />
+        </div>
+
       </div>
     );
   }
