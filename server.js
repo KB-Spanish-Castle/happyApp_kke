@@ -109,6 +109,7 @@ app.put('/songs/:spotifyId', function (req, res, next) {
     if (err) {
       next(err);
     } else {
+      //User.find
       song.count++;
       song.save(function (err, updatedSong) {
         if (err) {
@@ -127,7 +128,9 @@ app.post('/user', function (req, res, next) {
   user.name = req.body.name;
   user.email = req.body.email;
   user.password = req.body.password;
-  console.log("new user", user.name);
+  user.song = [req.body.songId];
+  console.log(req.body);
+  console.log(user);
   user.save(function (err, savedUser) {
     if (err) {
       next(err);
