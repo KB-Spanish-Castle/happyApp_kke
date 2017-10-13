@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Button } from 'reactstrap';
 
 class Song extends Component {
   constructor(props) {
@@ -18,8 +19,10 @@ class Song extends Component {
   render() {
     return (
       <li>
-        <button onClick={this.playSong}>PLAY</button>
-        {this.props.song.name}  <br /> Artist: {this.props.song.artist} Count: {this.props.song.count}
+        <Button color="danger" primary onClick={this.playSong}>PLAY</Button>
+        <span className="moby">{this.props.song.name}</span> <br /> 
+        Artist: <span className="moby2">{this.props.song.artist}</span>
+        Count: {this.props.song.count}
         <img src={this.props.song.image} />
       </li>
     );

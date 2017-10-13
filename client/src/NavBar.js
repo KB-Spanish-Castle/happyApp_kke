@@ -32,12 +32,15 @@ export default class NavBar extends Component {
         <Navbar color='light' light expand='md'>
           <NavbarBrand href='/'>Happy App</NavbarBrand>
           <Nav className='ml-auto' navbar>
+            {<br />}
             <NavItem>
               <Link className='nav-link' to='/'>Home</Link>
             </NavItem>
+            {<br />}
             <NavItem>
               <Link className='nav-link' to='/signup'>Sign Up</Link>
             </NavItem>
+            {<br />}
             <NavItem>
               <Link className='nav-link' to='/login'>Login</Link>
             </NavItem>
